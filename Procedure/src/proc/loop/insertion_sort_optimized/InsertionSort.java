@@ -11,23 +11,23 @@ import java.util.Arrays;
  */
 public class InsertionSort {
     public static void sort(int[] arr) {
-        System.out.println("Sorting");
         for (int k = 1; k < arr.length; k++) {
-            System.out.println("newElement = arr["+k+"] = " + arr[k]);
             int newElement = arr[k];
             int location = k - 1;
 
-
-
-
             while (location >= 0 && arr[location] > newElement) {
-                int foundPosition = Arrays.binarySearch(arr, 0, location, newElement);
-                arr[location + 1] = arr[location];
                 location--;
             }
 
+            int newElementPosition = Arrays.binarySearch(arr, 0, k, newElement);
+            newElementPosition = (newElementPosition >=0) ? newElementPosition : -newElementPosition-1;
 
-            arr[location + 1] = newElement;
+            int lengthToCopy = k - location - 1;
+            if(lengthToCopy > 0) // used for micro optimisation, not sure if it's needed
+            {
+                System.arraycopy(arr, newElementPosition,arr , newElementPosition + 1, lengthToCopy);
+            }
+            arr[newElementPosition] = newElement;
         }
     }
 }
