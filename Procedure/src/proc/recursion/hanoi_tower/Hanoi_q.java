@@ -25,10 +25,10 @@ public class Hanoi_q {
             Stack<Integer> from, Stack<Integer> help,
             Stack<Integer> to, int count) {
         if (count > 0) {
-           // exchange(?, ?, ?, ?);
+            exchange(from, to, help, count-1);
             int biggest = from.pop();
             to.push(biggest);
-            //exchange(?, ?, ?, ?);
+            exchange(help, from, to, count-1);
         }
     }
 }
