@@ -61,6 +61,7 @@ public class MatrixUtils {
                 {166,90}
         };
 
+
         System.out.println(testMatrixMul(a, b, axb));
     }
 
