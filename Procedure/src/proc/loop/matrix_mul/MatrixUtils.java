@@ -6,7 +6,7 @@ public class MatrixUtils {
     public static int[][] mul(int[][] a, int[][] b) {
         if(!checkArraysForMultiply(a, b))
         {
-            throw new ArithmeticException("These arrays are not applicable for multiplication.");
+            throw new ArithmeticException("Multiplication cannot be applied to these arrays.");
         }
 
         int bHeight = b[0].length;
@@ -43,8 +43,6 @@ public class MatrixUtils {
         }
         return true;
     }
-
-
 
     public static void main(String[] args) {
         int [][] a = {
