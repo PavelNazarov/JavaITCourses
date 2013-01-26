@@ -14,9 +14,10 @@ import java.util.Random;
  */
 public class SingleLLUtils_2_Test {
     public static void main(String[] args) {
-        Node node = generateList(0);
+        Node node = generateList(2);
         System.out.println(node);
-        System.out.println(SingleLLUtils_2.add(node, 0, 777));
+        System.out.println(SingleLLUtils_2.remove(node));
+
 
     }
 
