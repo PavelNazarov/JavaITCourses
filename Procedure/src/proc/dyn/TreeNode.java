@@ -1,12 +1,6 @@
 package proc.dyn;
 
-/**
- * Created with IntelliJ IDEA.
- * User: admin
- * Date: 26.01.13
- * Time: 2:53
- * To change this template use File | Settings | File Templates.
- */
+
 public class TreeNode {
     public int value;
     public TreeNode left;
@@ -17,4 +11,10 @@ public class TreeNode {
         this.left = left;
         this.right = right;
     }
+
+  /*  @Override
+    public String toString()
+    {
+        return "value = " + value + ";\n next: " + next;
+    }*/
 }
