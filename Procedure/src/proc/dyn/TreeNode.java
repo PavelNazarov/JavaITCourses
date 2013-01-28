@@ -12,9 +12,11 @@ public class TreeNode {
         this.right = right;
     }
 
-  /*  @Override
+    @Override
     public String toString()
     {
-        return "value = " + value + ";\n next: " + next;
-    }*/
+        return "value = " + value + ";\n\tright: " + right + "\n\tleft: " + left;
+    }
+
+
 }
