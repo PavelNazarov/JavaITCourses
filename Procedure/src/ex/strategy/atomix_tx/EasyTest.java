@@ -11,7 +11,6 @@ public class EasyTest {
     public static void main(String[] args) {
         long q = System.nanoTime();
         for (int k = 0; k < 1000000; k++) {
-            //System.out.println("k - " + k);
             final Random rnd = new Random(k);
             EasyManager manager = new EasyManagerImpl();
             final AtomicBoolean zedDead = new AtomicBoolean(false);
