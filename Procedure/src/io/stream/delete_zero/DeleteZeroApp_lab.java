@@ -1,6 +1,7 @@
 package io.stream.delete_zero;
 
 import java.io.*;
+import java.util.Arrays;
 
 /**
  * User: Igor Russo
@@ -16,20 +17,27 @@ public class DeleteZeroApp_lab {
         long startTime = System.currentTimeMillis();
 
         try {
-            in = new FileInputStream("d:/java.txt");
+            in = new FileInputStream("d:/1.txt");
             out = new FileOutputStream("d:/java_out.txt", false);
             while (true) {
                 byte[] buff = new byte[buffSize];
                 int value = in.read(buff);
-
+                System.out.println("New while");
+                System.out.println(Arrays.toString(buff));
                 if (value == -1) break;
-                int lastZeroIndex = 0;
+                int lastZeroIndex = -1;
                 for (int i = 0; i < buff.length; i++) {
                     if (buff[i] == 0 || i == buff.length - 1) {
-                        if (i - lastZeroIndex > 0) out.write(buff, lastZeroIndex, i - lastZeroIndex);
-                        lastZeroIndex = i + 1;
+                        if (i - lastZeroIndex > 0){
+
+                            out.write(buff, lastZeroIndex + 1, i - lastZeroIndex);
+
+
+                        }
+                        lastZeroIndex = i;
                     }
                 }
+
             }
         } catch (IOException e) {
             ioException = e;
@@ -45,4 +53,7 @@ public class DeleteZeroApp_lab {
             System.out.println(deltaTime);
         }
     }
+
+
 }
+
