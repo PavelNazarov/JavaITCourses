@@ -41,7 +41,7 @@ public class FileLab_LookFor_solution {
         if (root.isFile()) {
             if (checkIfFileIsBigImage(root)) {
                 File[] fArr = {root};
-                mFileArray = concatenate(mFileArray, fArr);
+                mFileArray = fArr;
             }
 
         } else {
