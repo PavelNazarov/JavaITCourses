@@ -12,46 +12,47 @@ public class Lab_Thread_Thread_Play_The_Accordion_Solution {
 
 
     public static void main(String[] args) throws InterruptedException {
-        for (int k = 0; k < 10; k++) {
+
             threadCoordinator = new CoordinatorRunnable();
             Thread threadCoord = new Thread(threadCoordinator);
             threadCoord.start();
             threadCoord.join();
-            System.out.println("----- End of main loop k = "+ k);
-        }
+
+            System.out.println("Main thread execution complete!");
     }
 
     private static class CoordinatorRunnable implements Runnable {
         @Override
         public void run() {
             System.out.println("CoordinatorRunnable");
+            for (int k = 0; k < 10; k++) {
+                // A + B
+                Runnable printerA = new PrintRunnable("A   .", 100);
+                Thread threadA = new Thread(printerA);
+                threadA.start();
+                Runnable printerB = new PrintRunnable(".   B", 99);
+                Thread threadB = new Thread(printerB);
+                threadB.start();
+                try {
+                    threadA.join();
+                    threadB.join();
+                } catch (InterruptedException e){
 
-            // A + B
-            Runnable printerA = new PrintRunnable("A   .", 100);
-            Thread threadA = new Thread(printerA);
-            threadA.start();
-            Runnable printerB = new PrintRunnable(".   B", 99);
-            Thread threadB = new Thread(printerB);
-            threadB.start();
-            try {
-                threadA.join();
-                threadB.join();
-            } catch (InterruptedException e){
+                }
+                // C
+                System.out.println("-----");
 
+                CRunnable cRunnable = new CRunnable();
+                Thread threadC = new Thread(cRunnable);
+                threadC.start();
+                try {
+                    threadC.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                System.out.println("----- End of main loop k = "+ k);
             }
-            // C
-            System.out.println("-----");
-
-            CRunnable cRunnable = new CRunnable();
-            Thread threadC = new Thread(cRunnable);
-            threadC.start();
-            try {
-                threadC.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            System.out.println("-----");
         }
     }
 

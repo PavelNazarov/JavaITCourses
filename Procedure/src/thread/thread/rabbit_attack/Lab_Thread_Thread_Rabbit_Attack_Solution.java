@@ -33,7 +33,7 @@ public class Lab_Thread_Thread_Rabbit_Attack_Solution {
     private static class RabbitPrinter implements Runnable {
         @Override
         public void run() {
-            System.out.println("New rabbit born!");
+           /* System.out.println("New rabbit born!");
             Runnable printer = new PrintRunnable(spaces + k, 100);
             try {
                 Thread.sleep(100);
@@ -43,7 +43,7 @@ public class Lab_Thread_Thread_Rabbit_Attack_Solution {
             while (...) {
                 new Thread().start(new RabbitPrinter());
 
-            }
+            }*/
         }
     }
 }
