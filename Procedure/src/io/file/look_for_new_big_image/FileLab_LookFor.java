@@ -15,7 +15,7 @@ public class FileLab_LookFor {
 
     public static void print(File root) {
         if (root.isFile()) {
-            System.out.println(root);
+
         } else {
             File[] fileArray = root.listFiles();
             for (File file : fileArray) {
