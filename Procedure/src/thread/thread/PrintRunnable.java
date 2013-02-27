@@ -8,8 +8,10 @@ package thread.thread;
 public class PrintRunnable implements Runnable {
     private String msg;
     private long sleepMillis;
+    private static int id = 0;
 
     public PrintRunnable(String msg, long sleepMillis) {
+        id++;
         this.msg = msg;
         this.sleepMillis = sleepMillis;
     }
@@ -18,11 +20,11 @@ public class PrintRunnable implements Runnable {
     public void run() {
         for (int k = 0; k < 10; k++) {
             try {
-                Thread.sleep(sleepMillis);
+               Thread.sleep(sleepMillis);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
-            System.out.println(msg);
+            System.out.println("id = " + id + "; k = " + k + "; msg = " + msg);
         }
     }
 }

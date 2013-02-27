@@ -1,24 +1,14 @@
 package thread.thread.rabbit_attack;
 
-import sun.org.mozilla.javascript.internal.ast.NewExpression;
-import thread.thread.PrintRunnable;
-
 /**
  * User: Igor Russo
  * Date: 26.02.13
  * Time: 7:56
  */
 public class Lab_Thread_Thread_Rabbit_Attack_Solution {
-    public static void main(String[] args) throws InterruptedException {
-        new Thread(new RabbitPrinter()).start();
 
-        for (int k = 1; k < 10000000; k++) {
-            String spaces = spaces(k);
-            Runnable printer = new PrintRunnable(spaces + k, 100);
-            Thread thread = new Thread(printer);
-            thread.start();
-            Thread.sleep(100);
-        }
+    public static void main(String[] args) throws InterruptedException {
+        new Thread(new RabbitPrinter(" New rabbit born!", 1000)).start();
     }
 
 
@@ -31,19 +21,28 @@ public class Lab_Thread_Thread_Rabbit_Attack_Solution {
     }
 
     private static class RabbitPrinter implements Runnable {
+        private static int id = 0;
+        private String msg;
+        private long sleepMillis;
+
         @Override
         public void run() {
-           /* System.out.println("New rabbit born!");
-            Runnable printer = new PrintRunnable(spaces + k, 100);
+            System.out.println(spaces(id) + id + msg);
             try {
-                Thread.sleep(100);
+                Thread.sleep(sleepMillis);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            while (...) {
-                new Thread().start(new RabbitPrinter());
 
-            }*/
+            while (id < 1000) {
+                new Thread(new RabbitPrinter( msg, sleepMillis)).start();
+            }
+        }
+
+        public RabbitPrinter(String msg, long sleepMillis) {
+            this.id++;
+            this.msg = msg;
+            this.sleepMillis = sleepMillis;
         }
     }
 }
